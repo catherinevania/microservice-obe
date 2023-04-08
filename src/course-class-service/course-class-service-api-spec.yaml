@@ -12,7 +12,37 @@ externalDocs:
 paths:
   /course-classes:
     get:
-
+      summary: Get all classes
+      description: View all classes from database
+      responses:
+        '200':
+          description: Succesfully get all classes
+          content: 
+            application/json: 
+              schema: 
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    course_id:
+                      type: integer
+                    syllabus_id:
+                      type: integer
+                    thumbnail_img:
+                      type: string
+                      contentMediaType: image/png
+                      contentEncoding: base64 
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
     post:
 
   /course-classes/{id}:
@@ -45,7 +75,7 @@ paths:
                       contentMediaType: image/png
                       contentEncoding: base64     
         '404':
-          description: Course not found
+          description: Class not found
           content:
             application/json:
               schema:
