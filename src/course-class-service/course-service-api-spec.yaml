@@ -142,5 +142,80 @@ paths:
     get:
 
     patch:
+    summary: Update existing course
+      description: Update certain attributes of an existing course in database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                study_program:
+                  type: integer
+                  enum:
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                  - 5
+                code: 
+                  type: string
+                name:
+                  type: string
+                course_credit:
+                  type: integer
+                lab_credit:
+                  type: integer
+                type:
+                  type: string
+                  enum: 
+                    - Mandatory
+                    - Elective
+                short_description:
+                  type: string
+                minimal_requirement:
+                  type: string
+                study_material_summary:
+                  type: string
+                learning_media:
+                  type: string
+      responses:
+        '200':
+          description: Succesfully update course
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                    study_program:
+                      type: integer
+                    code:
+                      type: string
+                    name: 
+                      type: string
+                    course_credit:
+                      type: integer
+                    lab_credit:
+                      type: integer
+                    type:
+                      type: string
+                    short_description:
+                      type: string
+                    minimal_requirement:
+                      type: string
+                    study_material_summary:
+                      type: string
+                    learning_media:
+                      type: string
+        '404':
+          description: Course not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
     
     delete:

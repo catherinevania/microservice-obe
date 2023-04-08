@@ -57,3 +57,31 @@ paths:
     patch:
 
     delete:
+      summary: Delete existing class
+      description: Delete existing class from database
+      parameters:
+        - name: id
+          in: path
+          description: ID of the class to delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Succesfully delete the class
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success: 
+                    type: boolean
+        '404':
+          description: Class not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
