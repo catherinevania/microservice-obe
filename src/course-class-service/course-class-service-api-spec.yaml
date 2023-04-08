@@ -12,7 +12,47 @@ externalDocs:
 paths:
   /course-classes:
     get:
-
+      summary: Get all courses
+      description: View all courses from database
+      responses:
+        '200':
+          description: Succesfully get all courses
+          content: 
+            application/json: 
+              schema: 
+                type: array
+                items:
+                  type: object
+                  properties:
+                    study_program:
+                      type: integer
+                    code:
+                      type: string
+                    name: 
+                      type: string
+                    course_credit:
+                      type: integer
+                    lab_credit:
+                      type: integer
+                    type:
+                      type: string
+                    short_description:
+                      type: string
+                    minimal_requirement:
+                      type: string
+                    study_material_summary:
+                      type: string
+                    learning_media:
+                      type: string
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
     post:
 
   /course-classes/{id}:
