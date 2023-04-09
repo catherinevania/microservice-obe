@@ -142,5 +142,109 @@ paths:
     get:
 
     patch:
+
+    delete:
+      summary: Delete existing course
+      description: Delete existing course from database
+      parameters:
+        - name: id
+          in: path
+          description: ID of the course to delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Succesfully delete the course
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success: 
+                    type: boolean
+        '404':
+          description: Course not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+  /course-classes:
+    get:
+
+    post:
+
+  /course-classes/{id}:
+    get:
+
+    patch:
+      summary: Update existing course classes
+      description: Update certain attributes of an existing course classes in database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                course:
+                  type: integer
+                  description: The course classes's ID
+                  enum:
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                  - 5
+                  required: true
+                class-name:
+                  type: string
+                  description: The name of course classes
+                  required: true
+                thumbnail_img:
+                  type: string
+                  format: binary
+                  description: The binary data of the thumbnail image file
+                  required: true
+      responses:
+        '200':
+          description: Succesfully update course classes
+          content: 
+            application/json:
+              schema: 
+                schema:
+              type: object
+              properties:
+                course:
+                  type: integer
+                  description: The course classes's ID
+                  enum:
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                  - 5
+                  required: true
+                class-name:
+                  type: string
+                  description: The name of course classes
+                  required: true
+                thumbnail_img:
+                  type: string
+                  format: binary
+                  description: The binary data of the thumbnail image file
+                  required: true
+        '404':
+          description: Course classes not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
     
     delete:
