@@ -12,7 +12,6 @@ externalDocs:
 paths:
   /course-classes:
     get:
-   get:
       summary: Get all classes
       description: View all classes from database
       responses:
