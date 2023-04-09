@@ -55,6 +55,71 @@ paths:
                     type: string 
 
     patch:
+      summary: Update existing course classes
+      description: Update certain attributes of an existing course classes in database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                course:
+                  type: integer
+                  description: The course classes's ID
+                  enum:
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                  - 5
+                  required: true
+                class-name:
+                  type: string
+                  description: The name of course classes
+                  required: true
+                thumbnail_img:
+                  type: string
+                  format: binary
+                  description: The binary data of the thumbnail image file
+                  required: true
+      responses:
+        '200':
+          description: Succesfully update course classes
+          content: 
+            application/json:
+              schema: 
+                schema:
+              type: object
+              properties:
+                course:
+                  type: integer
+                  description: The course classes's ID
+                  enum:
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                  - 5
+                  required: true
+                class-name:
+                  type: string
+                  description: The name of course classes
+                  required: true
+                thumbnail_img:
+                  type: string
+                  format: binary
+                  description: The binary data of the thumbnail image file
+                  required: true
+        '404':
+          description: Course classes not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
 
     delete:
       summary: Delete existing class

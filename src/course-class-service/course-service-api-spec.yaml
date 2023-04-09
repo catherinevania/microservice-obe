@@ -248,3 +248,31 @@ paths:
                     type: string
     
     delete:
+      summary: Delete existing course
+      description: Delete existing course from database
+      parameters:
+        - name: id
+          in: path
+          description: ID of the course to delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Succesfully delete the course
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success: 
+                    type: boolean
+        '404':
+          description: Course not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
