@@ -14,6 +14,77 @@ paths:
     get:
 
     post:
+      summary: Create new class
+      description: Create new class to database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                course_id: 
+                  type: integer
+                  description: The course's id
+                  example: 1
+                  minLength: 1
+                  maxLength: 255
+                  required: true
+                syllabus_id: 
+                  type: integer
+                  description: The syllabus's id
+                  example: 2
+                  minLength: 1
+                  maxLength: 255
+                  required: true
+                name:
+                  type: string
+                  description: The class's name
+                  example: Class A
+                  minLength: 1
+                  maxLength: 255
+                  required: true
+                thumbnail_img:
+                  type: string
+                  description: The thumbnail image for the class
+                  example: A class's thumbnail image
+                  contentMediaType: image/png, image/jpg, image/jpeg, image/svg
+                  contentEncoding: base64
+                  required: false
+      responses:
+        '200':
+          description: Succesfully create class
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                    course_id:
+                      type: integer
+                    syllabus_id:
+                      type: integer
+                    name: 
+                      type: string
+                    thumbnail_img:
+                      type: string
+        '401':
+          description: User Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '409':
+          description: Conflict - invalid duplicates
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
 
   /course-classes/{id}:
     get:
