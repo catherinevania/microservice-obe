@@ -228,7 +228,7 @@ paths:
                   message:
                     type: string
     patch:
-          summary: Update existing course
+      summary: Update existing course
       description: Update certain attributes of an existing course in database
       requestBody:
         required: true

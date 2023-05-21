@@ -251,3 +251,87 @@ paths:
                 properties:
                   message:
                     type: string
+
+  /course-classes/{id}/add-student:
+    post:
+      summary: Add new student to a course class
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                course_class_id: 
+                  type: integer
+                  description: The course class id
+                  example: 1
+                  minLength: 1
+                  maxLength: 255
+                  required: true
+                student_user_id: 
+                  type: integer
+                  description: The added student id
+                  example: 2
+                  minLength: 1
+                  maxLength: 255
+                  required: true
+                name:
+                  type: string
+                  description: The student's name
+                  example: Class A
+                  minLength: 1
+                  maxLength: 255
+                  required: true
+      responses:
+        '200':
+          description: Succesfully added a new student
+          content: 
+            application/json:
+              schema: 
+                schema:
+              type: object
+              properties:
+                course_class_id:
+                  type: integer
+                student_user_id:
+                  type: integer
+                name:
+                  type: string       
+        '404':
+          description: Class not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+  /course-classes/{id}/view-students:   
+    get:
+      summary: View all students in the class
+      responses:
+        '200':
+          description: Succesfully view all students in the class
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                    student_user_id:
+                      type: integer
+                    name:
+                      type: string    
+        '404':
+          description: Class not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string 
+
+
+                
