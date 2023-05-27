@@ -9,5 +9,40 @@ use App\Http\Resources\CourseResource;
 
 class CourseController extends Controller
 {
-    //
+	public function index()
+	{
+		//code here
+	}
+
+	/**
+	 * Store a newly created resource in storage.
+	 */
+	public function store()
+	{
+		//code here
+	}
+
+	/**
+	 * Display the specified resource.
+	 */
+	public function show()
+	{
+		//code here
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 */
+	public function update()
+	{
+		//code here
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 */
+	public function destroy()
+	{
+		//code here
+	}
 }
