@@ -12,7 +12,8 @@ class Course extends Model
 		protected $table = 'course';
 
 		protected $fillable =[
-			'study_program',
+			'creator_user_id',
+			'study_program_id',
 			'code',
 			'name',
 			'course_credit',
@@ -20,7 +21,7 @@ class Course extends Model
 			'type',
 			'short_description',
 			'minimal_requirement',
-			'study_material_summary',
+			'study_material',
 			'learning_media'
 		];
 
@@ -31,7 +32,7 @@ class Course extends Model
 
 		public function studyProgram()
     {
-        return $this->belongsTo(StudyProgram::class);
+        return $this->belongsTo(StudyProgram::class, 'study_program_id');
     }
 
     public function courseClasses(){

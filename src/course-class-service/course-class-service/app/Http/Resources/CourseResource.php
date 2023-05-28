@@ -15,9 +15,10 @@ class CourseResource extends JsonResource
 	public function toArray(Request $request): array
 	{
 		return [
-			'study_program' => $this->study_program,
-			'code' => $this->code,
+			'creator_user_id' => $this->creator_user_id,
+			'study_program_id'=> $this->study_program_id,
 			'name' => $this->name,
+			'code' => $this->code,
 			'course_credit' => $this->course_credit,
 			'lab_credit' => $this->lab_credit,
 			'type' => $this->type,
