@@ -8,7 +8,7 @@ use App\Http\Requests\CourseClassUpdateRequest;
 use App\Http\Resources\CourseClassResource;
 use App\Models\CourseClass;
 use App\Models\User;
-
+use Illuminate\Http\JsonResponse;
 
 class CourseClassController extends Controller
 {
@@ -36,9 +36,15 @@ class CourseClassController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 */
-	public function update()
+	public function update(CourseClassUpdateRequest $request, CourseClass $courseClass): CourseClassResource|JsonResponse
 	{
-		//code here
+		$validated = $request->validated();
+        if (empty($validated)) {
+            return response()->json(['message' => 'Not modified'], 304);
+        }
+
+		$courseClass->update($request->all());
+		return new CourseClassResource($courseClass);
 	}
 
 	/**

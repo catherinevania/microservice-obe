@@ -47,8 +47,9 @@ class CourseController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 */
-	public function destroy()
+	public function destroy(Course $Course): JsonResponse
 	{
-		//code here
+		$Course->delete();
+		return response()->json(['message' => 'Course deleted']);
 	}
 }
