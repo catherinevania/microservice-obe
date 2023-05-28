@@ -29,7 +29,7 @@ class JoinClassTableSeeder extends Seeder
 
 		];
 		foreach ($joinclasses as $joinclass) {
-			DB::table('join_class')->insert($joinclass);
+			DB::table('join_classes')->insert($joinclass);
 		}
 	}
 }

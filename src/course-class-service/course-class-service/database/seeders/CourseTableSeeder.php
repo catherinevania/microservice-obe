@@ -67,7 +67,7 @@ class CourseTableSeeder extends Seeder
 			],
 		];
 		foreach ($courses as $course) {
-			DB::table('course')->insert($course);
+			DB::table('courses')->insert($course);
 		}
 	}
 }

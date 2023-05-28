@@ -11,7 +11,7 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
-		Schema::create('course_class', function (Blueprint $table) {
+		Schema::create('course_classes', function (Blueprint $table) {
 			$table->id();
 			$table->unsignedBigInteger('course_id');
 			$table->foreign('course_id')->references('id')->on('course')->onDelete('cascade');
@@ -25,13 +25,12 @@ return new class extends Migration
 			$table->foreign('syllabus_id')->references('id')->on('syllabus')->onDelete('cascade');
 		});
 	}
-
 	/**
 	 * Reverse the migrations.
 	 */
 	public function down(): void
 	{
-		Schema::create('course_class', function (Blueprint $table) {
+		Schema::create('course_classes', function (Blueprint $table) {
 			$table->dropForeign('course_id');
 			$table->dropForeign('creator_user_id');
 			$table->dropForeign('syllabus_id');
@@ -40,7 +39,7 @@ return new class extends Migration
 			$table->dropColumn('creator_user_id');
 			$table->dropColumn('syllabus_id');
 
-			Schema::dropIfExists('course_class');
+			Schema::dropIfExists('course_classes');
 		});
 	}
 };

@@ -19,7 +19,7 @@ class SyllabusTableSeeder extends Seeder
 				'id' => 1,
 				'created_at' => Carbon::now(),
 				'updated_at' => Carbon::now(),
-				'course_id' => 1,
+				'course_id' => 2,
 				'title' => 'Pemahaman Dasar Microservice',
 				'author' => 'Amelia Kartika',
 				'head_of_study_program' => 'Widhy Hayuhardika',
@@ -29,7 +29,7 @@ class SyllabusTableSeeder extends Seeder
 				'id' => 2,
 				'created_at' => Carbon::now(),
 				'updated_at' => Carbon::now(),
-				'course_id' => 1,
+				'course_id' => 2,
 				'title' => 'Pemahaman Dasar Microservice',
 				'author' => 'Amelia Kartika',
 				'head_of_study_program' => 'Widhy Hayuhardika',
@@ -38,7 +38,7 @@ class SyllabusTableSeeder extends Seeder
 
 		];
 		foreach ($syllabus as $syllabi) {
-			DB::table('syllabus')->insert($syllabi);
+			DB::table('syllabuses')->insert($syllabi);
 		}
 	}
 }

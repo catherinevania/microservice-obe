@@ -11,7 +11,7 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
-		Schema::create('syllabus', function (Blueprint $table) {
+		Schema::create('syllabuses', function (Blueprint $table) {
 			$table->id();
 			$table->timestamps();
 			$table->unsignedBigInteger('course_id');
@@ -29,14 +29,14 @@ return new class extends Migration
 	 */
 	public function down(): void
 	{
-		Schema::create('syllabus', function (Blueprint $table) {
+		Schema::create('syllabuses', function (Blueprint $table) {
 			$table->dropForeign('course_id');
 			$table->dropForeign('creator_user_id');
 
 			$table->dropColumn('course_id');
 			$table->dropColumn('creator_user_id');
 
-			Schema::dropIfExists('syllabus');
+			Schema::dropIfExists('syllabuses');
 		});
 	}
 };

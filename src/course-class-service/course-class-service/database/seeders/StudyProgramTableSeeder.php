@@ -47,7 +47,7 @@ class StudyProgramTableSeeder extends Seeder
 			],
 		];
 		foreach ($studyprograms as $studyprogram) {
-			DB::table('study_program')->insert($studyprogram);
+			DB::table('study_programs')->insert($studyprogram);
 		}
 	}
 }

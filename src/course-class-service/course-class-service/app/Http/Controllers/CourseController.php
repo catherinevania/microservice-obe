@@ -25,11 +25,8 @@ class CourseController extends Controller
 	 */
 	public function store(CourseStoreRequest $request): CourseResource
 	{
-		// $request->input('study_program_id') = (int)request->input('study_program_id');
-		// dd($request->all());
 		$validated = $request->validated();
 		// dd($validated);
-		// $validated['study_program_id'] = (int) $validated['study_program_id'];
 		return new CourseResource(Course::create($validated));
 	}
 

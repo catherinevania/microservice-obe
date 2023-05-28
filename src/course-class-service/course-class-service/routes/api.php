@@ -13,3 +13,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('course', CourseController::class);
 Route::apiResource('course-class', CourseClassController::class);
+
+// Route::post('/course-class/{id}/add-student', 'CourseClassController@addStudentToClass');
+// Route::get('/course-class/{id}/view-students', 'CourseClassController@viewStudentInClass');
+
+Route::post('/course-class/{id}/add-student', [CourseClassController::class, 'addStudentToClass']);
+Route::get('/course-class/{id}/view-students', [CourseClassController::class, 'viewStudentInClass']);
+

@@ -39,9 +39,9 @@ class CourseClassController extends Controller
 	public function update(CourseClassUpdateRequest $request, CourseClass $courseClass): CourseClassResource|JsonResponse
 	{
 		$validated = $request->validated();
-        if (empty($validated)) {
-            return response()->json(['message' => 'Not modified'], 304);
-        }
+		if (empty($validated)) {
+			return response()->json(['message' => 'Not modified'], 304);
+		}
 
 		$courseClass->update($request->all());
 		return new CourseClassResource($courseClass);
@@ -52,7 +52,6 @@ class CourseClassController extends Controller
 	 */
 	public function destroy()
 	{
-	
 	}
 
 	/**
@@ -60,14 +59,33 @@ class CourseClassController extends Controller
 	 */
 	public function addStudentToClass(Request $request)
 	{
-		$courseclass = CourseClass::find($request->input('course_class_id'));
+		$courseClass = CourseClass::find($request->input('course_class_id'));
 		$user = User::find($request->input('student_user_id'));
 
-		$courseclass->user()->attach($user->id);
+		if ($courseClass->students()->where('student_user_id', $user->id)->exists()) {
+			return response()->json([
+				'success' => false,
+				'message' => 'User already exists in the class',
+			], 400);
+		}
+
+		$courseClass->students()->syncWithoutDetaching([$user->id]);
 
 		return response()->json([
 			'success' => true,
-			'message' => 'User added to Class',
+			'message' => 'User added to class',
+		]);
+	}
+
+	public function viewStudentInClass(Request $request, $id)
+	{
+		// dd($id);
+		$courseclass = CourseClass::find($id);
+
+		return response()->json([
+			'success' => true,
+			'message' => 'Grabbed all students in the class',
+			'data' => $courseclass->students()->get()
 		]);
 	}
 }
