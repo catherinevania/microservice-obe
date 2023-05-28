@@ -41,6 +41,8 @@ return new class extends Migration
 
 			$table->dropForeign('creator_class_id');
 			$table->dropColumn('creator_class_id');
+
+			Schema::dropIfExists('course');
 		});
 	}
 };

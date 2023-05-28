@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CourseStoreRequest;
 use App\Http\Requests\CourseUpdateRequest;
 use App\Http\Resources\CourseResource;
+use App\Models\Course;
+use Illuminate\Http\JsonResponse;
 
 class CourseController extends Controller
 {

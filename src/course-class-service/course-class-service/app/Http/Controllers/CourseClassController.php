@@ -9,6 +9,7 @@ use App\Http\Resources\CourseClassResource;
 use App\Models\CourseClass;
 use App\Models\User;
 
+
 class CourseClassController extends Controller
 {
 	public function index()
@@ -45,7 +46,7 @@ class CourseClassController extends Controller
 	 */
 	public function destroy()
 	{
-		//code here
+	
 	}
 
 	/**

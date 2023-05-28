@@ -17,6 +17,7 @@ return new class extends Migration
 			$table->foreign('course_class_id')->references('id')->on('course_class')->onDelete('cascade');
 			$table->unsignedBigInteger('student_user_id');
 			$table->foreign('student_user_id')->references('id')->on('user')->onDelete('cascade');
+			$table->timestamps();
 		});
 	}
 
@@ -31,6 +32,8 @@ return new class extends Migration
 
 			$table->dropColumn('course_class_id');
 			$table->dropColumn('student_user_id');
+
+			Schema::dropIfExists('join_class');
 		});
 	}
 };

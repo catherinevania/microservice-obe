@@ -35,6 +35,8 @@ return new class extends Migration
 
 			$table->dropColumn('course_id');
 			$table->dropColumn('creator_user_id');
+
+			Schema::dropIfExists('syllabus');
 		});
 	}
 };
