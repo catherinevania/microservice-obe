@@ -20,8 +20,7 @@ return new class extends Migration
 			$table->string('class_code');
 			$table->unsignedBigInteger('creator_user_id');
 			$table->foreign('creator_user_id')->references('id')->on('user')->onDelete('cascade');
-			$table->timestamp('created_at');
-			$table->timestamp('updated_at');
+			$table->timestamps();
 			$table->unsignedBigInteger('syllabus_id');
 			$table->foreign('syllabus_id')->references('id')->on('syllabus')->onDelete('cascade');
 		});

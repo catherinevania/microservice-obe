@@ -26,8 +26,7 @@ return new class extends Migration
 			$table->string('minimal_requirement');
 			$table->string('study_material');
 			$table->string('learning_media');
-			$table->timestamp('created_at');
-			$table->timestamp('updated_at');
+			$table->timestamps();
 		});
 	}
 
