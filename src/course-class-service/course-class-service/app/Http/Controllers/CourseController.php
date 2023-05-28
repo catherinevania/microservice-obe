@@ -36,17 +36,23 @@ class CourseController extends Controller
 	/**
 	 * Display the specified resource.
 	 */
-	public function show()
+	public function show(Course $Course): CourseResource
 	{
-		//code here
+		return new CourseResource($Course);
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 */
-	public function update()
+	public function update(CourseUpdateRequest $request, Course $course): CourseResource|JsonResponse
 	{
-		//code here
+		$validated = $request->validated();
+        if (empty($validated)) {
+            return response()->json(['message' => 'Not modified'], 304);
+        }
+
+		$course->update($request->all());
+		return new CourseResource($course);
 	}
 
 	/**
