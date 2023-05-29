@@ -20,11 +20,10 @@ class CourseClassController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 */
-	public function store()
+	public function store(Request $request): CourseClassResource
 	{
 		$validated = $request->validated();
-		// dd($validated);
-		return new CourseClassResource(Course::create($validated));
+		return new CourseClassResource(CourseClass::create($validated));
 	}
 
 	/**
@@ -52,9 +51,9 @@ class CourseClassController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 */
-	public function destroy()
+	public function destroy(CourseClass $courseClass)
 	{
-		$Course->delete();
+		$courseClass->delete();
 		return response()->json(['message' => 'CourseClass deleted']);
 	}
 
