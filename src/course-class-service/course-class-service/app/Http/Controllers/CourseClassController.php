@@ -14,7 +14,12 @@ class CourseClassController extends Controller
 {
 	public function index()
 	{
-		//code here
+		$courseclass = CourseClass::paginate(10);
+		return CourseClassResource::collection($courseclass);
+
+		CourseClass::with('course_id')->get();
+		CourseClass::with('creator_user_id')->get();
+		CourseClass::with('syllabus_id')->get();
 	}
 
 	/**
