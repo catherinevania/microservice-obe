@@ -22,7 +22,13 @@ class CourseClassStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'creator_user_id' => ['integer'],
+            'course_id' => ['integer'],
+			'student_user_id' => ['integer'],
+			'name' => ['string'],
+            'thumbnail_img' => ['string'],
+            'class_code' => ['string'],
+            'syllabus_id' => ['integer'],
         ];
     }
 }
