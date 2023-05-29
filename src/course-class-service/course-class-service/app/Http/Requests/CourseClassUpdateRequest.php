@@ -21,8 +21,24 @@ class CourseClassUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        if ($method == 'PATCH') {
+            return [
+                'course_id' => ['sometimes', 'integer'],
+                'student_user_id' => ['sometimes', 'integer'],
+                'name' => ['sometimes', 'string'],
+                'thumbnail_img' => ['sometimes', 'string'],
+                'class_code' => ['sometimes', 'string'],
+                'syllabus_id' => ['sometimes', 'integer']
         ];
+         } else {
+            return [
+                'course_id' => ['sometimes', 'integer'],
+                'student_user_id' => ['sometimes', 'integer'],
+                'name' => ['sometimes', 'string'],
+                'thumbnail_img' => ['sometimes', 'string'],
+                'class_code' => ['sometimes', 'string'],
+                'syllabus_id' => ['sometimes', 'integer']
+        ];
+    }
     }
 }
