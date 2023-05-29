@@ -22,7 +22,9 @@ class CourseClassController extends Controller
 	 */
 	public function store()
 	{
-		//code here
+		$validated = $request->validated();
+		// dd($validated);
+		return new CourseClassResource(Course::create($validated));
 	}
 
 	/**
@@ -52,6 +54,8 @@ class CourseClassController extends Controller
 	 */
 	public function destroy()
 	{
+		$Course->delete();
+		return response()->json(['message' => 'CourseClass deleted']);
 	}
 
 	/**
