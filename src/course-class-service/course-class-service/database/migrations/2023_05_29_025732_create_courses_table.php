@@ -14,9 +14,7 @@ return new class extends Migration
 		Schema::create('courses', function (Blueprint $table) {
 			$table->id();
 			$table->unsignedBigInteger('study_program_id');
-			$table->foreign('study_program_id')->references('id')->on('study_program')->onDelete('cascade');
 			$table->unsignedBigInteger('creator_user_id');
-			$table->foreign('creator_user_id')->references('id')->on('user')->onDelete('cascade');
 			$table->string('name');
 			$table->string('code');
 			$table->integer('course_credit');
@@ -36,10 +34,7 @@ return new class extends Migration
 	public function down(): void
 	{
 		Schema::create('courses', function (Blueprint $table) {
-			$table->dropForeign('study_program_id');
 			$table->dropColumn('study_program_id');
-
-			$table->dropForeign('creator_class_id');
 			$table->dropColumn('creator_class_id');
 
 			Schema::dropIfExists('courses');

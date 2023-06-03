@@ -38,7 +38,7 @@ class SyllabusTableSeeder extends Seeder
 
 		];
 		foreach ($syllabus as $syllabi) {
-			DB::table('syllabuses')->insert($syllabi);
+			DB::table('syllabi')->insert($syllabi);
 		}
 	}
 }

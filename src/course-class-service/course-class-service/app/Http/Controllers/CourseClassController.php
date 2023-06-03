@@ -14,25 +14,25 @@ class CourseClassController extends Controller
 {
 	public function index()
 	{
-		//code here
+		$courseclass = CourseClass::paginate(10);
+		return CourseClassResource::collection($courseclass);
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 */
-	public function store()
+	public function store(CourseClassStoreRequest $request): CourseClassResource
 	{
 		$validated = $request->validated();
-		// dd($validated);
-		return new CourseClassResource(Course::create($validated));
+		return new CourseClassResource(CourseClass::create($validated));
 	}
 
 	/**
 	 * Display the specified resource.
 	 */
-	public function show()
+	public function show(CourseClass $CourseClass)
 	{
-		//code here
+		return new CourseClassResource($CourseClass);
 	}
 
 	/**
@@ -52,9 +52,9 @@ class CourseClassController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 */
-	public function destroy()
+	public function destroy(CourseClass $courseClass)
 	{
-		$Course->delete();
+		$courseClass->delete();
 		return response()->json(['message' => 'CourseClass deleted']);
 	}
 
@@ -83,7 +83,6 @@ class CourseClassController extends Controller
 
 	public function viewStudentInClass(Request $request, $id)
 	{
-		// dd($id);
 		$courseclass = CourseClass::find($id);
 
 		return response()->json([

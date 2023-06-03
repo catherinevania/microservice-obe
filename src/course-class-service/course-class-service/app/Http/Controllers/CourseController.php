@@ -16,8 +16,8 @@ class CourseController extends Controller
 		$course = Course::paginate(10);
 		return CourseResource::collection($course);
 
-		Course::with('studyProgram')->get();
-		Course::with('creator')->get();
+		//Course::with('studyProgram')->get();
+		//Course::with('creator')->get();
 	}
 
 	/**
@@ -26,7 +26,6 @@ class CourseController extends Controller
 	public function store(CourseStoreRequest $request): CourseResource
 	{
 		$validated = $request->validated();
-		// dd($validated);
 		return new CourseResource(Course::create($validated));
 	}
 

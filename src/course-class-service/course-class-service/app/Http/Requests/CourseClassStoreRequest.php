@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class CourseClassStoreRequest extends FormRequest
 {
     /**
@@ -11,7 +12,7 @@ class CourseClassStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,12 @@ class CourseClassStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'course_id' => ['integer'],
+            'name' => ['string'],
+            'class_code' => ['string'],
+            'thumbnail_img' => ['string'],
+            'creator_user_id' => ['integer'],
+            'syllabus_id' => ['integer'],
         ];
     }
 }

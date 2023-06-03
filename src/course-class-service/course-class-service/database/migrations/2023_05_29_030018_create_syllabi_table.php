@@ -11,16 +11,14 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
-		Schema::create('syllabuses', function (Blueprint $table) {
+		Schema::create('syllabi', function (Blueprint $table) {
 			$table->id();
 			$table->timestamps();
 			$table->unsignedBigInteger('course_id');
-			$table->foreign('course_id')->references('id')->on('course')->onDelete('cascade');
 			$table->string('title');
 			$table->string('author');
 			$table->string('head_of_study_program');
 			$table->unsignedBigInteger('creator_user_id');
-			$table->foreign('creator_user_id')->references('id')->on('user')->onDelete('cascade');
 		});
 	}
 
@@ -29,14 +27,12 @@ return new class extends Migration
 	 */
 	public function down(): void
 	{
-		Schema::create('syllabuses', function (Blueprint $table) {
-			$table->dropForeign('course_id');
-			$table->dropForeign('creator_user_id');
+		Schema::create('syllabi', function (Blueprint $table) {
 
 			$table->dropColumn('course_id');
 			$table->dropColumn('creator_user_id');
 
-			Schema::dropIfExists('syllabuses');
+			Schema::dropIfExists('syllabi');
 		});
 	}
 };
