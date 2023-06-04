@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Foundation\Testing\WithFaker;
+
 
 return new class extends Migration
 {
@@ -14,9 +16,9 @@ return new class extends Migration
         Schema::create('join_classes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('course_class_id');
-            $table->foreign('course_class_id')->references('id')->on('course_class')->onDelete('cascade');
+            // $table->foreign('course_class_id')->references('id')->on('course_class')->onDelete('cascade');
             $table->unsignedBigInteger('student_user_id');
-            $table->foreign('student_user_id')->references('id')->on('user')->onDelete('cascade');
+            // $table->foreign('student_user_id')->references('id')->on('user')->onDelete('cascade');
             $table->timestamps();
         });
     }

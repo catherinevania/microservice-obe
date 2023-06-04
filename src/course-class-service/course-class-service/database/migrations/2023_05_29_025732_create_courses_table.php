@@ -22,7 +22,7 @@ return new class extends Migration
 			$table->enum('type', ['mandatory', 'elective']);
 			$table->string('short_description');
 			$table->string('minimal_requirement');
-			$table->string('study_material');
+			$table->string('study_material')->nullable();
 			$table->string('learning_media');
 			$table->timestamps();
 		});
