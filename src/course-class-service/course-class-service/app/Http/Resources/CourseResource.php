@@ -29,4 +29,5 @@ class CourseResource extends JsonResource
 			'learning_media' => $this->learning_media,
 		];
 	}
+
 }
