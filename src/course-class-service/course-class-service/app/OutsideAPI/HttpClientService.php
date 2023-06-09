@@ -25,7 +25,7 @@ class HttpClientService
      */
     public function getHelloString(string $name): string
     {
-        $response = $this->httpClient->get(new Uri("{$this->baseUri}/hello/{$name}"), [
+        $response = $this->httpClient->get(new Uri("{$this->baseUri}/api/course"), [
             'headers' => ['Content-Type' => 'application/json']
         ]);
         $body   = $response->getBody();
