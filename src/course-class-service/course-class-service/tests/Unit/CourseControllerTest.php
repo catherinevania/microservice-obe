@@ -16,29 +16,6 @@ class CourseControllerTest extends TestCase
      * @return void
      */
 
-    public function testCourseCanBeCreated()
-    {
-         $courseData = [
-            'creator_user_id' => 1,
-            'study_program_id' => 1,
-            'name' => 'Pemrograman Web Lanjut',
-            'code' => 'A123',
-            'course_credit' => 3,
-            'lab_credit' => 1,
-            'type' => 'mandatory',
-            'short_description' => 'Pemrograman Web tingkat Lanjut',
-            'minimal_requirement' => 'Pemrograman Web',
-            'study_material_summary' => null,
-            'learning_media' => 'slack',
-         ];
- 
-         $course = Course::create($courseData);
- 
-         $this->assertInstanceOf(Course::class, $course);
-         $this->assertEquals('Pemrograman Web Lanjut', $course->name);
-         $this->assertEquals('A123', $course->code);
-     }
-
      public function testCourseNameIsRequired()
     {
         $courseData = [

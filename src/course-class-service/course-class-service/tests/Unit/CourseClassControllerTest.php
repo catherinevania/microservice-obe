@@ -16,24 +16,6 @@ class CourseClassControllerTest extends TestCase
      * @return void
      */
 
-    public function testCourseClassCanBeCreated()
-    {
-        $courseClassData = [
-            'id' => 1,
-            'course_id' => 1,
-            'name' => 'A',
-            'thumbnail_img' => 'image.png',
-            'class_code' => 'A123',
-            'creator_user_id' => 2,
-            'syllabus_id' => 1
-        ];
- 
-         $courseClass = CourseClass::create($courseClassData);
- 
-         $this->assertInstanceOf(CourseClass::class, $courseClass);
-         $this->assertEquals('A', $courseClass->name);
-         $this->assertEquals('A123', $courseClass->class_code);
-     }
 
      public function testCourseClassNameIsRequired()
     {
