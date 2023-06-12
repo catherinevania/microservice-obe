@@ -31,8 +31,14 @@ class HttpClientService
         $body   = $response->getBody();
         $object = \json_decode($body, null, 512, JSON_THROW_ON_ERROR);
 
-        return $object->message;
+        if (isset($object->message)) {
+            return $object->message;
+        } else {
+
+            return "Default hello string";
+        }
     }
+
 
     /**
      * Get Goodbye String
