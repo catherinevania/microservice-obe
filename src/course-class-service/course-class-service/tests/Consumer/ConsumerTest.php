@@ -56,10 +56,10 @@ class ConsumerTest extends TestCase
 			->willRespondWith($response); // This has to be last. This is what makes an API request to the Mock Server to set the interaction.
 
 		$service = new HttpClientService($config->getBaseUri()); // Pass in the URL to the Mock Server.
-		$result  = $service->getHelloString('Course'); // Make the real API request against the Mock Server.
+		$result  = $service->getCourseData('Course'); // Make the real API request against the Mock Server.
 
 		$builder->verify(); // This will verify that the interactions took place.
 
-		$this->assertEquals('Succesfully grabbed all course', $result); // Make your assertions.
+		$this->assertEquals('{"message":[{"id":1,"course_id":5,"name":"Pemrograman Web Lanjut A","class_code":"PWL-A","thumbnail_img":"https://via.placeholder.com/640x480.png/000088?text=cats","creator_user_id":1,"syllabus_id":1}]}', $result); // Make your assertions.
 	}
 }

@@ -23,22 +23,18 @@ class HttpClientService
     /**
      * Get Hello String
      */
-    public function getHelloString(string $name): string
+    public function getCourseData(string $name): string
     {
         $response = $this->httpClient->get(new Uri("{$this->baseUri}/api/course"), [
             'headers' => ['Content-Type' => 'application/json']
         ]);
         $body   = $response->getBody();
         $object = \json_decode($body, null, 512, JSON_THROW_ON_ERROR);
+        $array = array($body);
+        $name = implode("<br>", $array);
 
-        if (isset($object->message)) {
-            return $object->message;
-        } else {
-
-            return "Default hello string";
-        }
+        return $name;
     }
-
 
     /**
      * Get Goodbye String
