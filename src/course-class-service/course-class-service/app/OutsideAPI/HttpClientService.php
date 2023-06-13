@@ -21,7 +21,7 @@ class HttpClientService
     }
 
     /**
-     * Get Hello String
+     * Get Course Data
      */
     public function getCourseData(string $name): string
     {
@@ -34,19 +34,5 @@ class HttpClientService
         $name = implode("<br>", $array);
 
         return $name;
-    }
-
-    /**
-     * Get Goodbye String
-     */
-    public function getGoodbyeString(string $name): string
-    {
-        $response = $this->httpClient->get("{$this->baseUri}/goodbye/{$name}", [
-            'headers' => ['Content-Type' => 'application/json']
-        ]);
-        $body   = $response->getBody();
-        $object = \json_decode($body, null, 512, JSON_THROW_ON_ERROR);
-
-        return $object->message;
     }
 }

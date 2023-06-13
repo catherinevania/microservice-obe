@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Consumer;
+namespace Tests\Contract;
 
 use PhpPact\Consumer\InteractionBuilder;
 use PhpPact\Consumer\Matcher\Matcher;
@@ -12,14 +12,14 @@ use App\OutsideAPI\HttpClientService;
 use PhpPact\Standalone\MockService\MockServerConfig;
 use PhpPact\Standalone\MockService\MockServer;
 
-class ConsumerTest extends TestCase
+class CourseConsumerTest extends TestCase
 {
 	/**
 	 * Example PACT test.
 	 *
 	 * @throws \Exception
 	 */
-	public function testGetHelloString()
+	public function testGetCourseData()
 	{
 		$matcher = new Matcher();
 
