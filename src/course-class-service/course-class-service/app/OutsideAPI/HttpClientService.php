@@ -35,4 +35,30 @@ class HttpClientService
 
         return $name;
     }
+
+    public function postCourseData(string $name): string
+    {
+        $response = $this->httpClient->post(new Uri("{$this->baseUri}/api/course"), [
+            'headers' => ['Content-Type' => 'application/json']
+        ]);
+        $body   = $response->getBody();
+        $object = \json_decode($body, null, 512, JSON_THROW_ON_ERROR);
+        $array = array($body);
+        $name = implode("<br>", $array);
+
+        return $name;
+    }
+
+    public function deleteCourseData(string $name): string
+    {
+        $response = $this->httpClient->delete(new Uri("{$this->baseUri}/api/course/1"), [
+            'headers' => ['Content-Type' => 'application/json']
+        ]);
+        $body   = $response->getBody();
+        $object = \json_decode($body, null, 512, JSON_THROW_ON_ERROR);
+        $array = array($body);
+        $name = implode("<br>", $array);
+
+        return $name;
+    }
 }
